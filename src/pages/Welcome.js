@@ -30,9 +30,11 @@ export default function Welcome({user, addUser = f => f}) {
 
     const createRoom = async () => {
         try {
-            const userData = await createUser();
-            addUser(userData);
-            navigate("/rooms/1"); // test route
+            if (!user && process.env.REACT_APP_API_PREFIX) {
+                const userData = await createUser();
+                addUser(userData);
+            }
+            navigate("/create");
         } catch (exception) {
             console.error(exception);
         }
