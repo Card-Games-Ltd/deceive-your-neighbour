@@ -19,13 +19,6 @@ export default function Create() {
                         <label><input type="radio" name="radio" />4</label>
                     </div>
                     <button className='create-button'>Готово!</button>
-
-                    
-
-
-
-
-
                 </div>
 
         </div>
