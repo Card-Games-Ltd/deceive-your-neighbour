@@ -1,0 +1,18 @@
+.game-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    color: black;
+    font-size: 1.3rem;
+    border-bottom: solid black 2px;
+    padding-left: 2%;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.game-container:hover {
+    background: rgb(222, 228, 222);
+}
