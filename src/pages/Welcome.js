@@ -43,9 +43,11 @@ export default function Welcome({user, addUser = f => f}) {
 
     const searchRoom = async () => {
         try {
+            if (!user && process.env.REACT_APP_API_PREFIX) {
             const userData = await createUser();
             addUser(userData);
-            navigate("/rooms/1"); // test route
+            }
+            navigate("/join"); // test route
         } catch (exception) {
             console.error(exception);
         }

@@ -1,5 +1,5 @@
 :root{
-  --avatar-image: url(/public/textures/ava.jpg);
+  --avatar-image: url(./textures/ava.jpg);
 }
 
 body {

@@ -42,7 +42,7 @@ export default function Create({user}) {
 
     return (
         <div className='create-main'> 
-             <img src={headerImg} className='create-header' alt='header'></img>
+                <img src={headerImg} className='create-header' alt='header'></img>
                 <div className='create-form'>
                     <div className='form-header'>Создать игру</div>
                     <input
