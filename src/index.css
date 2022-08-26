@@ -1,3 +1,7 @@
+:root{
+  --avatar-image: url(/public/textures/ava.jpg);
+}
+
 body {
   margin: 0;
   width: 100vw;
