@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import './App.css';
@@ -16,22 +15,12 @@ import Welcome from "./pages/Welcome";
 export default function App() {
   return (
     <Router>
-      <div>
-        <div>{/* ... */}</div>
-
+      <div className="App">
         <Routes>
-          <Route path="/create">
-            <CreateRoom />
-          </Route>
-          <Route path="/rooms/:id">
-            <Room />
-          </Route>
-          <Route path="/rooms">
-            <Rooms />
-          </Route>
-          <Route path="/">
-            <Welcome />
-          </Route>
+          <Route path="/create" element={<CreateRoom />}></Route>
+          <Route path="/rooms/:id" element={<Room />}></Route>
+          <Route path="/rooms" element={<Rooms />}></Route>
+          <Route path="/" element={<Welcome />}></Route>
         </Routes>
       </div>
     </Router>
