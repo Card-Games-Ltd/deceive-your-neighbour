@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Welcome.css';
 import {useNavigate} from "react-router-dom";
+import headerImg from "../textures/header.png";
 
 export default function Welcome({user, addUser = f => f}) {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ export default function Welcome({user, addUser = f => f}) {
         <div className='welcome-main'>
 
             <div className='welcome-content'>
-            <div className='welcome-header'></div>
+                <img src={headerImg} className='welcome-header' alt='header'></img>
                 <div
                     className='avatar'
                     onClick={chooseFile}
@@ -84,7 +85,7 @@ export default function Welcome({user, addUser = f => f}) {
                     placeholder='Темоха'
                     value={name}
                     onChange={(event) => setName(event.target.value)}
-                ></input>
+                />
                 <button onClick={createRoom}>Создать игру</button>
                 <button onClick={searchRoom}>Вступить в игру</button>
             </div>

@@ -1,7 +1,7 @@
 .create-main {
     width: 100vw;
     height: 100vh;
-    background-image: url(/public/textures/background.jpg);
+    background-image: url(../textures/background.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
@@ -10,11 +10,8 @@
 
 }
 .create-header {
-    width: 70vw;
-    height: 24.7vh;
-    background-image: url(/public/textures/header.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    width: 50%;
+    height: auto;
     margin-top: 1%;
 }   
 
