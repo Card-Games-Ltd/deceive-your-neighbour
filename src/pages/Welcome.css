@@ -1,0 +1,102 @@
+.welcome-main {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/public/textures/background.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+.welcome-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.welcome-header {
+    width: 70vw;
+    height: 24.7vh;
+    background-image: url(/public/textures/header.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 1%;
+}   
+
+.avatar {
+    border: solid white 3px;
+    width: 10vw;
+    height: 10vw;
+    background-image: url(/public/textures/ava.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 2%;
+    transition: all 0.2s;
+}
+.avatar:hover{
+    filter: brightness(120%);
+}
+
+.name-input {
+    -webkit-appearance: none;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom: solid white;
+    background-color: transparent;
+    outline: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 15%;
+    margin-top: 1%;
+}
+.name-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 0.6;
+}
+.name-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+
+.welcome-content > button {
+    background: rgb(221, 88, 88);
+	color: black;
+	border: solid white 3px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border-radius: 20px;
+    font-size: 1.4rem;
+    padding: 0.3em 1em;
+    margin-top: 2%;
+    transition: all 0.5s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.service-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10%;
+    right: 5%;}
+
+.service-buttons-container > button {
+    background: rgb(221, 88, 88);
+	color: black;
+	border: solid white 3px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    padding: 0.2em 0.2em;
+    height: 10vh;
+    width: 10vh;
+    margin-top: 20%;
+}
