@@ -1,4 +1,4 @@
-export default function Welcome() {
+export default function Home() {
     return (
         <div>Welcome!</div>
     );
