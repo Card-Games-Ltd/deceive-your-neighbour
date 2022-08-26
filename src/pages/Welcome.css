@@ -77,7 +77,7 @@
     transition: all 0.5s;
 }
 
-button:hover {
+.welcome-content > button:hover {
     transform: scale(1.1);
 }
 
