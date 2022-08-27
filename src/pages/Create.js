@@ -7,7 +7,7 @@ export default function Create({user}) {
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(null);
     const [isPublic, setIsPublic] = useState(false);
     const [playersNumber, setPlayersNumber] = useState(3);
 
@@ -33,7 +33,7 @@ export default function Create({user}) {
                 console.log(data);
                 navigate(`/rooms/${data.hash}`);
             } else {
-                navigate("/rooms/1"); // test
+                navigate("/rooms/id"); // test
             }
         } catch (exception) {
             console.error(exception);

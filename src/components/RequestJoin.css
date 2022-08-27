@@ -1,0 +1,75 @@
+
+.dark{
+    width: 100%;
+    height: 100%;
+    background: rgba(28, 28, 28, 0.482);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-form {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 70%;
+    height: 60%;
+    position: relative;
+
+}
+
+.password-form-header {
+    font-size: 1.6rem;
+    font-weight: bolder;
+    color: rgb(255, 108, 75);
+}
+.password-input {
+    -webkit-appearance: none;
+    border: solid darkgrey 2px;
+    background-color: lightgray;
+    outline: none;
+    color: black;
+    font-size: 1.1rem;
+    width: 50%;
+    padding: 0em 4em 0em 0.5em;
+    border-radius: 10px;
+    font-family: Tilda;
+}
+.password-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 0.6;
+}
+.password-input::-ms-input-placeholder { /* Microsoft Edge */
+    color: black;
+}
+
+.submit-password-btn {
+    background: rgb(255, 108, 75);
+	color: black;
+	border: solid white 3px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    padding: 0em 2em;
+  }
+  .exit {
+    position: absolute;
+    top: -0.5rem;
+    right: 0px;
+    font-size: 2.7rem;
+    color: darkgrey;
+    max-height: fit-content;
+    cursor: pointer;
+    transition: all 0.5s;
+    line-height: 2.1rem;
+    text-align: center;
+  }
+  
+  .exit:hover{
+    filter: brightness(40%);
+}

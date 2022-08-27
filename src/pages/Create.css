@@ -67,7 +67,7 @@
     width: 67%;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 3%;
+    margin-top: 0;
     font-size: 1.2rem;
   }
   .create-button {
@@ -80,6 +80,6 @@
     border-radius: 30px;
     font-size: 1.4rem;
     padding: 0.2em 2.2em 0.2em 2.2em;
-    margin-top: 7%;
+    margin-top: 1%;
     text-align: center;
   }

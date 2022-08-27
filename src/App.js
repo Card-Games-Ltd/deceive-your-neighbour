@@ -27,7 +27,7 @@ export default function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/rooms/:id" element={<Room />}></Route>
+          <Route path="/rooms/id" element={<Room />}></Route>
           <Route path="/create" element={<Create user={user} />}></Route>
           <Route path="/join" element={<Join/>}></Route>
           <Route path="/" element={<Welcome user={user} addUser={addUser} />}></Route>
