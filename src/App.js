@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,13 +23,19 @@ export default function App() {
     }
   }
 
+  useEffect(() => {
+    if (user && user.avatar) {
+      document.documentElement.style.setProperty('--avatar-image', `url(${user.avatar})`);
+    }
+  }, [user]);
+
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/rooms/:id" element={<Room />}></Route>
+          <Route path="/rooms/:id" element={<Room user={user} />}></Route>
           <Route path="/create" element={<Create user={user} />}></Route>
-          <Route path="/rooms" element={<RoomsList />}></Route>
+          <Route path="/rooms" element={<RoomsList user={user} />}></Route>
           <Route path="/" element={<Welcome user={user} addUser={addUser} />}></Route>
         </Routes>
       </div>

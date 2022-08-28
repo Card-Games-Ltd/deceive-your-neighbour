@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 export default function EnterRoomWindow({ hash, close = f => f }) {
     const navigate = useNavigate();
-    
+
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -18,7 +18,7 @@ export default function EnterRoomWindow({ hash, close = f => f }) {
         if (response.status === 403) {
             setErrorMessage(data.error);
         } else if (response.ok) {
-            await navigate(`/rooms/${hash}`);
+            await navigate(`/rooms/${hash}?password=${password}`);
         }
     }
 

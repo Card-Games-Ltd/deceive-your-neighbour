@@ -46,7 +46,7 @@ export default function Welcome({user, addUser = f => f}) {
         setAvatar(avatarInput.files && avatarInput.files.length ? avatarInput.files[0] : null);
     }
 
-    const createRoom = async () => {
+    const goToCreatePage = async () => {
         try {
             if (!user) {
                 const userData = await createUser();
@@ -58,7 +58,7 @@ export default function Welcome({user, addUser = f => f}) {
         }
     }
 
-    const searchRoom = async () => {
+    const goToRoomsPage = async () => {
         try {
             if (!user) {
                 const userData = await createUser();
@@ -105,8 +105,8 @@ export default function Welcome({user, addUser = f => f}) {
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                 />
-                <button onClick={createRoom}>Создать игру</button>
-                <button onClick={searchRoom}>Вступить в игру</button>
+                <button onClick={goToCreatePage}>Создать игру</button>
+                <button onClick={goToRoomsPage}>Вступить в игру</button>
             </div>
             <div className='service-buttons-container'>
                 <button className='service-button'>L</button>
