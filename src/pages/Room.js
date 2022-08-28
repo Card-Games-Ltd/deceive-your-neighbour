@@ -17,7 +17,7 @@ export default function Room() {
             </div>
 
             <div className='game-main'>
-            <div className='player' playerid = '2'>
+            <div className='player' playerid='2'>
                 <div className='table'></div>
                 <div className='player-avatar'>Никита</div>
                 <div className='player-cards' attention='PLACEHOLDER'></div>
