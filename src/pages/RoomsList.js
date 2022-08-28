@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import './Join.css';
-import GameAvailable from "../components/GameAvailable"; 
-import RequestJoin from "../components/RequestJoin"; 
+import './RoomsList.css';
+import RoomItem from "../components/RoomItem";
+import EnterRoomWindow from "../components/EnterRoomWindow";
 import headerImg from "../textures/header.png";
 
 
-export default function Create() {
+export default function RoomsList() {
 
     const navigate = useNavigate();
 
@@ -33,11 +33,11 @@ export default function Create() {
     }
 
     const requsetJoinWindow = joinRequested ? 
-    <RequestJoin wrongPassword = {wrongPassword} 
-                 checkPassword = {checkPassword} 
-                 joinRequest = {joinRequest} 
-                 passwordEntered = {passwordEntered}
-                 setPasswordEntered = {setPasswordEntered}/>
+    <EnterRoomWindow wrongPassword = {wrongPassword}
+                     checkPassword = {checkPassword}
+                     joinRequest = {joinRequest}
+                     passwordEntered = {passwordEntered}
+                     setPasswordEntered = {setPasswordEntered}/>
         : '';
 
     return (
@@ -46,9 +46,9 @@ export default function Create() {
              <div className='join-list'>
                  <div className='list-header'>Присоединиться к игре</div>
                  <div className='games-container'>
-                     <GameAvailable onClick = {joinRequest}/>
-                     <GameAvailable />
-                     <GameAvailable />
+                     <RoomItem onClick = {joinRequest}/>
+                     <RoomItem />
+                     <RoomItem />
                  </div>
                  {requsetJoinWindow}
              </div>

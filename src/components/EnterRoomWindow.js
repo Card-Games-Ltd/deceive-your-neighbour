@@ -1,6 +1,6 @@
-import './RequestJoin.css';
+import './EnterRoomWindow.css';
 
-export default function RequestJoin(props) {
+export default function EnterRoomWindow(props) {
     return (
         <div className='dark'>
         <div className='password-form'>

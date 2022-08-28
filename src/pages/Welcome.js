@@ -31,11 +31,11 @@ export default function Welcome({user, addUser = f => f}) {
 
     const createRoom = async () => {
         try {
-            if (!user && process.env.REACT_APP_API_PREFIX) {
+            if (!user) {
                 const userData = await createUser();
                 addUser(userData);
             }
-            navigate("/create");
+            await navigate("/create");
         } catch (exception) {
             console.error(exception);
         }
@@ -43,11 +43,11 @@ export default function Welcome({user, addUser = f => f}) {
 
     const searchRoom = async () => {
         try {
-            if (!user && process.env.REACT_APP_API_PREFIX) {
-            const userData = await createUser();
-            addUser(userData);
+            if (!user) {
+                const userData = await createUser();
+                addUser(userData);
             }
-            navigate("/join"); // test route
+            await navigate("/rooms");
         } catch (exception) {
             console.error(exception);
         }

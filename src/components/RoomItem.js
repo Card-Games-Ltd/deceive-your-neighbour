@@ -1,7 +1,7 @@
 import React from 'react';
-import "./GameAvailable.css";
+import "./RoomItem.css";
 
-export default function GameAvailable(props) {
+export default function RoomItem(props) {
     const gameName = "Игра томаса шелби";
     const playersTotal = 3;
     const playersInRoom = 2;

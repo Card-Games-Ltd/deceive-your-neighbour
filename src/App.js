@@ -10,7 +10,7 @@ import './App.css';
 import Room from "./pages/Room";
 import Welcome from "./pages/Welcome";
 import Create from "./pages/Create";
-import Join from "./pages/Join";
+import RoomsList from "./pages/RoomsList";
 
 
 export default function App() {
@@ -27,9 +27,9 @@ export default function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/rooms/id" element={<Room />}></Route>
+          <Route path="/rooms/:id" element={<Room />}></Route>
           <Route path="/create" element={<Create user={user} />}></Route>
-          <Route path="/join" element={<Join/>}></Route>
+          <Route path="/rooms" element={<RoomsList />}></Route>
           <Route path="/" element={<Welcome user={user} addUser={addUser} />}></Route>
         </Routes>
       </div>

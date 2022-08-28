@@ -7,34 +7,27 @@ export default function Create({user}) {
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
-    const [password, setPassword] = useState(null);
+    const [password, setPassword] = useState("");
     const [isPublic, setIsPublic] = useState(false);
     const [playersNumber, setPlayersNumber] = useState(3);
 
     const createRoom = async () => {
         try {
-            if (user && process.env.REACT_APP_API_PREFIX) {
-                const formData = new FormData();
-                console.log([name,
-                    password,
-                    isPublic,
-                    playersNumber,
-                    user.session_token]);
-                formData.append('name', name);
-                formData.append('password', password);
-                formData.append('is_public', `${1 * isPublic}`);
-                formData.append('players_number', `${playersNumber}`);
-                formData.append('session_token', user.session_token);
-                const response = await fetch(process.env.REACT_APP_API_PREFIX + "/api/rooms", {
-                    method: "POST",
-                    body: formData,
-                });
-                const data = await response.json();
-                console.log(data);
-                navigate(`/rooms/${data.hash}`);
-            } else {
-                navigate("/rooms/id"); // test
+            const jsonData = {
+                name: name,
+                password: password,
+                is_public: isPublic,
+                players_number: playersNumber,
+                session_token: user.session_token,
             }
+            const response = await fetch(process.env.REACT_APP_API_PREFIX + "/api/rooms", {
+                method: "POST",
+                body: JSON.stringify(jsonData),
+                headers: {'Content-Type': 'application/json'}
+            });
+            const data = await response.json();
+            console.log(data);
+            navigate(`/rooms/${data.hash}`);
         } catch (exception) {
             console.error(exception);
         }
@@ -63,7 +56,7 @@ export default function Create({user}) {
                         <input
                             type="checkbox"
                             checked={isPublic === true}
-                            onChange={(event) => setIsPublic(Boolean(1 * event.target.value))}
+                            onChange={() => {setIsPublic(!isPublic)}}
                         />
                         <div>Публичная игра</div>
                     </div>
