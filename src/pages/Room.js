@@ -3,12 +3,13 @@ import './Room.css'
 import {useParams, useSearchParams} from "react-router-dom";
 
 export default function Room({ user }) {
+    const startGameIn = 10 * 1000; // 10 secs;
+
     const [searchParams] = useSearchParams();
     const { id } = useParams();
 
     const [room, setRoom] = useState(null);
-
-    const [gameStarted, setGameStarted] = useState(false);
+    const [game, setGame] = useState(null);
 
     useEffect(() => {
         if (!room) {
@@ -26,6 +27,27 @@ export default function Room({ user }) {
         }
     }, []);
 
+    useEffect(() => {
+        if (room) {
+            if (!room.game) {
+                setTimeout(async () => {
+                    await startGame(room.hash);
+                }, startGameIn);
+            } else {
+                setGame(room.game);
+            }
+        }
+    }, [room]);
+
+    const startGame = async (roomId) => {
+        const response = await fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${roomId}/games`, {
+            method: 'POST'
+        });
+        const data = await response.json();
+        console.log(data);
+        setGame(data);
+    }
+
     return (
         <div className='container'>
 
@@ -42,9 +64,7 @@ export default function Room({ user }) {
 
             <div className='game-main'>
 
-                {!gameStarted ? 
-                <div className='waitNote'>Ждем всех игроков...</div> 
-                : ''}
+                {!game && <div className='waitNote'>Ждем всех игроков...</div>}
 
                 <div className='player player-left' playerid='2'>
                     <div className='table'></div>
