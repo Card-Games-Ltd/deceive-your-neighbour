@@ -8,23 +8,28 @@
     justify-content: flex-start;
     top: 17%;
   }
+  .table { 
+    background: linear-gradient(90deg, rgba(116,77,28,1) 7%, rgba(132,92,47,1) 52%, rgba(96,70,47,1) 92%);
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.571);
+    width: 70%;
+    height: 70%;
+    border-radius: 5px;
+  }
+
   .player-avatar {
-    border: solid white 3px;
-    width: 7vw;;
-    min-width: 100px;
-    height: 7vw;
-    min-height: 100px;
+    border: solid white 2px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     top: 0%;
-    background-image: var(--avatar-image);
+    /* background-image: var(--avatar-image);
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     color: white;
-    font-size: 1.1rem;
 }
 .player-cards {
     position: absolute;
@@ -43,6 +48,12 @@
     top: 75%;
     left: 87%;
 }
+.player-name {
+    position: absolute;
+    color: white;
+    font-size: 1.2rem;
+    z-index: 5;
+}
 
 .player-avatar-left{
   right: 10%;
@@ -50,8 +61,12 @@
 .player-left{
   left: 0;
 }
-.player-cards-left {
+/* .player-cards-left {
   left: 15%;
+} */
+.player-name-left {
+    bottom: 5%;
+    left: 3%;
 }
 
 .player-top {
@@ -77,6 +92,12 @@
   left: 5%;
   top: 60%;
 }
+.player-name-top {
+    bottom: 10%;
+    right: 5%;
+}
+
+
 
 .player-right {
   right: 0%; 
@@ -94,5 +115,9 @@
 }
 .cards-left-right {
   left: 5%;
-  top: 70%;
+  top: 75%;
 } 
+.player-name-right {
+    bottom: 5%;
+    right: 3%;
+}

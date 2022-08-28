@@ -12,7 +12,10 @@ export default function Player({ player, position }) {
             <div
                 className={`player-cards player-cards-${position}`}
                 attention='PLACEHOLDER'
-            >{player.name}</div>
+            ></div>
+            <div 
+                className={`player-name player-name-${position}`}
+                >{player.name}</div>
             <div
                 className={`cards-left cards-left-${position}`}
             >3</div>

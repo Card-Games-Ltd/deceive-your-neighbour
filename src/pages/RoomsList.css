@@ -28,12 +28,14 @@
     margin-top: 1%;
     color: rgb(255, 108, 75);
     margin-bottom: 2%;
+    line-height: 3rem;
 }
 .games-container {
-    width: 80%;
+    width: 85%;
     height: 65%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    overflow-x: hidden;
 }

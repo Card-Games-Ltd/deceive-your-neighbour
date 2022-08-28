@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Room.css'
 import {useParams, useSearchParams} from "react-router-dom";
 import Player from '../components/Player';
+import GamePanel from '../components/GamePanel';
 import {getPlayerPosition} from "../modules/PlayerPosition";
 
 export default function Room({ user }) {
@@ -81,16 +82,11 @@ export default function Room({ user }) {
                 {!game && <div className='waitNote'>Ждем всех игроков...</div>}
 
                 {players.map((item, index) => (
-                    index && <Player key={index} position={getPlayerPosition(players, index)} player={item} />
+                    index ? <Player key={index} position={getPlayerPosition(players, index)} player={item} /> :  '' 
                 ))}
             </div>
-            <div className='game-bottom-panel'>
-                <button className='rules-button'>?</button>
-                <div className='buttons-container'>
-                    <button className='game-button green'>Верю</button>
-                    <button className='game-button'>Проверить</button>
-                </div>
-            </div>
+
+            <GamePanel {...user}/>
 
         </div>
     );
