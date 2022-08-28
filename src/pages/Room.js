@@ -12,7 +12,10 @@ export default function Room({ user }) {
 
     useEffect(() => {
         if (!room) {
-            fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${id}?password=${searchParams.get("password")}`)
+            fetch(
+                process.env.REACT_APP_API_PREFIX +
+                `/api/rooms/${id}?password=${searchParams.get("password")}&session_token=${user.session_token}`
+            )
                 .then(response => response.json())
                 .then(data => {
                     setRoom(data);

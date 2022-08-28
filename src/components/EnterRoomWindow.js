@@ -2,7 +2,7 @@ import './EnterRoomWindow.css';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
-export default function EnterRoomWindow({ hash, close = f => f }) {
+export default function EnterRoomWindow({ user, hash, close = f => f }) {
     const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
@@ -10,10 +10,13 @@ export default function EnterRoomWindow({ hash, close = f => f }) {
 
     useEffect(() => {
         setErrorMessage(""); // clear errors when password is modified
-    }, [password])
+    }, [password]);
 
     const checkRoomCredentials = async () => {
-        const response = await fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${hash}?password=${password}`);
+        const response = await fetch(
+            process.env.REACT_APP_API_PREFIX +
+            `/api/rooms/${hash}?password=${password}&session_token=${user.session_token}`
+        );
         const data = await response.json();
         if (response.status === 403) {
             setErrorMessage(data.error);

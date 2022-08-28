@@ -5,7 +5,7 @@ import EnterRoomWindow from "../components/EnterRoomWindow";
 import Header from "../components/Header";
 
 
-export default function RoomsList() {
+export default function RoomsList({ user }) {
     const [rooms, setRooms] = useState([]);
     const [chosenRoomId, setChosenRoomId] = useState(null);
 
@@ -32,6 +32,7 @@ export default function RoomsList() {
                      ))}
                  </div>
                  {chosenRoomId && <EnterRoomWindow
+                     user={user}
                      hash={chosenRoomId}
                      close={() => setChosenRoomId(null)}
                  />}
