@@ -10,6 +10,12 @@ export default function Welcome({user, addUser = f => f}) {
     const [name, setName] = useState("");
     const [avatar, setAvatar] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        setErrorMessage(""); // clear error when name is enetered
+    }, [name]);
+
 
     useEffect(() => {
         if (user) {
@@ -46,41 +52,18 @@ export default function Welcome({user, addUser = f => f}) {
         setAvatar(avatarInput.files && avatarInput.files.length ? avatarInput.files[0] : null);
     }
 
-    const goToCreatePage = async () => {
+    const goToNextPage = async (path) => {
         try {
             if (!user) {
                 const userData = await createUser();
                 addUser(userData);
             }
-            await navigate("/create");
+            await navigate(path);
         } catch (exception) {
             console.error(exception);
+            if (name === '') setErrorMessage('Введите имя чтобы продолжить');
         }
     }
-
-    const goToRoomsPage = async () => {
-        try {
-            if (!user) {
-                const userData = await createUser();
-                addUser(userData);
-            }
-            await navigate("/rooms");
-        } catch (exception) {
-            console.error(exception);
-        }
-    }
-
-    // const goToNextPage = async (path) => {
-    //     try {
-    //         if (!user) {
-    //             const userData = await createUser();
-    //             addUser(userData);
-    //         }
-    //         await navigate(path);
-    //     } catch (exception) {
-    //         console.error(exception);
-    //     }
-    // }
 
 
     const createUser = async () => {
@@ -117,8 +100,9 @@ export default function Welcome({user, addUser = f => f}) {
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                 />
-                <button onClick={goToCreatePage}>Создать игру</button>
-                <button onClick={goToRoomsPage}>Вступить в игру</button>
+                {errorMessage && <div>{errorMessage}</div>}
+                <button onClick={()=> {goToNextPage('/create')}}>Создать игру</button>
+                <button onClick={()=> {goToNextPage('/rooms')}}>Вступить в игру</button>
             </div>
             <div className='service-buttons-container'>
                 <button className='service-button'>L</button>
