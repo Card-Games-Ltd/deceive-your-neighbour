@@ -8,6 +8,8 @@ export default function Room({ user }) {
 
     const [room, setRoom] = useState(null);
 
+    const [gameStarted, setGameStarted] = useState(false);
+
     useEffect(() => {
         if (!room) {
             fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${id}?password=${searchParams.get("password")}`)
@@ -36,13 +38,32 @@ export default function Room({ user }) {
             </div>
 
             <div className='game-main'>
-                <div className='player' playerid='2'>
+
+                {!gameStarted ? 
+                <div className='waitNote'>Ждем всех игроков...</div> 
+                : ''}
+
+                <div className='player player-left' playerid='2'>
                     <div className='table'></div>
-                    <div className='player-avatar'>{user.name}</div>
-                    <div className='player-cards' attention='PLACEHOLDER'></div>
+                    <div className='player-avatar player-avatar-left'>{user.name}</div>
+                    <div className='player-cards player-cards-left' attention='PLACEHOLDER'></div>
                     <div className='cards-left'>3</div>
                 </div>
+                <div className='player player-top' playerid='3'>
+                    <div className='table'></div>
+                    <div className='player-avatar player-avatar-top'>{user.name}</div>
+                    <div className='player-cards player-cards-top' attention='PLACEHOLDER'></div>
+                    <div className='cards-left cards-left-top'>3</div>
+                </div>
+                <div className='player player-right' playerid='4'>
+                    <div className='table'></div>
+                    <div className='player-avatar player-avatar-right'>{user.name}</div>
+                    <div className='player-cards player-cards-right' attention='PLACEHOLDER'></div>
+                    <div className='cards-left cards-left-right'>3</div>
+                </div>
+
             </div>
+            
 
             <div className='game-bottom-panel'>
                 <button className='rules-button'>?</button>
