@@ -27,7 +27,7 @@ export default function Create({user}) {
             });
             const data = await response.json();
             console.log(data);
-            navigate(`/rooms/${data.hash}`);
+            navigate(`/rooms/${data.hash}?password=${password}`);
         } catch (exception) {
             console.error(exception);
         }
