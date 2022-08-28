@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Welcome.css';
 import {useNavigate} from "react-router-dom";
 import headerImg from "../textures/header.png";
+import {toBase64} from "../modules/Base64";
 
 export default function Welcome({user, addUser = f => f}) {
     const navigate = useNavigate();
@@ -19,6 +20,22 @@ export default function Welcome({user, addUser = f => f}) {
             }
         }
     }, [user, avatarUrl]);
+
+    useEffect(() => {
+        if (avatar) {
+            const generateBase64 = async () => {
+                try {
+                    const imageUrl = await toBase64(avatar);
+                    if (imageUrl) {
+                        document.documentElement.style.setProperty('--avatar-image', `url(${imageUrl})`);
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+            generateBase64();
+        }
+    }, [avatar])
 
     const chooseFile = () => {
         document.getElementById('avatar').click();
