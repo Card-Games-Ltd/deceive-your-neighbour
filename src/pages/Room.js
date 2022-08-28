@@ -26,6 +26,19 @@ export default function Room({ user }) {
         }
     }, []);
 
+        // if (room) {
+        // let players = room.players;
+        // let me = players.find(item => item.id === user.id);
+        // let k = players.indexOf(me);
+        // console.log(k);
+        // players=players.splice(k).concat(players);
+        // console.log(players);    
+        // }
+ 
+
+
+    
+
     return (
         <div className='container'>
 
@@ -48,26 +61,24 @@ export default function Room({ user }) {
 
                 <div className='player player-left' playerid='2'>
                     <div className='table'></div>
-                    <div className='player-avatar player-avatar-left'>{user.name}</div>
+                    <div className='player-avatar player-avatar-left'></div>
                     <div className='player-cards player-cards-left' attention='PLACEHOLDER'></div>
                     <div className='cards-left'>3</div>
                 </div>
                 <div className='player player-top' playerid='3'>
                     <div className='table'></div>
-                    <div className='player-avatar player-avatar-top'>{user.name}</div>
+                    <div className='player-avatar player-avatar-top'></div>
                     <div className='player-cards player-cards-top' attention='PLACEHOLDER'></div>
                     <div className='cards-left cards-left-top'>3</div>
                 </div>
                 <div className='player player-right' playerid='4'>
                     <div className='table'></div>
-                    <div className='player-avatar player-avatar-right'>{user.name}</div>
+                    <div className='player-avatar player-avatar-right'></div>
                     <div className='player-cards player-cards-right' attention='PLACEHOLDER'></div>
                     <div className='cards-left cards-left-right'>3</div>
                 </div>
 
             </div>
-            
-
             <div className='game-bottom-panel'>
                 <button className='rules-button'>?</button>
                 <div className='buttons-container'>
