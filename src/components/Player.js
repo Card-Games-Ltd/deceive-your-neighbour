@@ -5,10 +5,10 @@ export default function Player({ player, position }) {
     return (
         <div className = {`player player-${position}`} playerid={position + 1}>
             <div className='table'></div>
-            <div
+            <img
                 className={`player-avatar player-avatar-${position}`}
-                style={{backgroundImage: `url(${player.avatar}) !important`}}
-            ></div>
+                src={player.avatar}
+            ></img>
             <div
                 className={`player-cards player-cards-${position}`}
                 attention='PLACEHOLDER'
