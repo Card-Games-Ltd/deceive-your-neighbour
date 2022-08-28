@@ -1,7 +1,7 @@
 .join-main {
     width: 100vw;
     height: 100vh;
-    background-image: url(../textures/background.jpg);
+    background-image: url(../assets/textures/background.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
@@ -9,11 +9,6 @@
     flex-direction: column;
 
 }
-.join-header {
-    width: 50%;
-    height: auto;
-    margin-top: 1%;
-}   
 
 .join-list{
     width: 40%;

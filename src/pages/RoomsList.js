@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './RoomsList.css';
 import RoomItem from "../components/RoomItem";
 import EnterRoomWindow from "../components/EnterRoomWindow";
-import headerImg from "../textures/header.png";
+import Header from "../components/Header";
 
 
 export default function RoomsList() {
@@ -23,7 +23,7 @@ export default function RoomsList() {
 
     return (
          <div className='join-main'> 
-             <img src={headerImg} className='join-header' alt='header'></img>
+             <Header />
              <div className='join-list'>
                  <div className='list-header'>Присоединиться к игре</div>
                  <div className='games-container'>

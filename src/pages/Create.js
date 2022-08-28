@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Create.css';
 import {useNavigate} from "react-router-dom";
-import headerImg from "../textures/header.png";
+import Header from "../components/Header";
 
 export default function Create({user}) {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function Create({user}) {
 
     return (
         <div className='create-main'> 
-                <img src={headerImg} className='create-header' alt='header'></img>
+                <Header />
                 <div className='create-form'>
                     <div className='form-header'>Создать игру</div>
                     <input

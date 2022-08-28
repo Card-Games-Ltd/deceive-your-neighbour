@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Welcome.css';
 import {useNavigate} from "react-router-dom";
-import headerImg from "../textures/header.png";
+import Header from "../components/Header";
 import {toBase64} from "../modules/Base64";
 
 export default function Welcome({user, addUser = f => f}) {
@@ -70,6 +70,19 @@ export default function Welcome({user, addUser = f => f}) {
         }
     }
 
+    // const goToNextPage = async (path) => {
+    //     try {
+    //         if (!user) {
+    //             const userData = await createUser();
+    //             addUser(userData);
+    //         }
+    //         await navigate(path);
+    //     } catch (exception) {
+    //         console.error(exception);
+    //     }
+    // }
+
+
     const createUser = async () => {
         const formData = new FormData();
         formData.append('name', name);
@@ -86,9 +99,8 @@ export default function Welcome({user, addUser = f => f}) {
 
     return (
         <div className='welcome-main'>
-
             <div className='welcome-content'>
-                <img src={headerImg} className='welcome-header' alt='header'></img>
+            <Header />
                 <div
                     className='avatar'
                     onClick={chooseFile}
