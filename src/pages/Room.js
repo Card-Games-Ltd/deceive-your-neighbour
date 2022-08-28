@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './Room.css'
 import {useParams, useSearchParams} from "react-router-dom";
+import Player from '../components/Player';
 
 export default function Room({ user }) {
     const startGameIn = 10 * 1000; // 10 secs;
@@ -78,25 +79,20 @@ export default function Room({ user }) {
 
                 {!game && <div className='waitNote'>Ждем всех игроков...</div>}
 
-                <div className='player player-left' playerid='2'>
-                    <div className='table'></div>
-                    <div className='player-avatar player-avatar-left'></div>
-                    <div className='player-cards player-cards-left' attention='PLACEHOLDER'></div>
-                    <div className='cards-left'>3</div>
-                </div>
-                <div className='player player-top' playerid='3'>
-                    <div className='table'></div>
-                    <div className='player-avatar player-avatar-top'></div>
-                    <div className='player-cards player-cards-top' attention='PLACEHOLDER'></div>
-                    <div className='cards-left cards-left-top'>3</div>
-                </div>
-                <div className='player player-right' playerid='4'>
-                    <div className='table'></div>
-                    <div className='player-avatar player-avatar-right'></div>
-                    <div className='player-cards player-cards-right' attention='PLACEHOLDER'></div>
-                    <div className='cards-left cards-left-right'>3</div>
-                </div>
-
+                <Player player ='player-left'
+                        playerAvatar = 'player-avatar-left'
+                        playerCards = 'player-cards-left'
+                    />
+                <Player player ='player-top'
+                        playerAvatar = 'player-avatar-top'
+                        playerCards = 'player-cards-top'
+                        cardsLeft = 'cards-left-top'
+                    />
+                <Player player ='player-right'
+                        playerAvatar = 'player-avatar-right'
+                        playerCards = 'player-cards-right'
+                        cardsLeft = 'cards-left-right'
+                    />
             </div>
             <div className='game-bottom-panel'>
                 <button className='rules-button'>?</button>

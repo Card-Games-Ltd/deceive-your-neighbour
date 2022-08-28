@@ -1,0 +1,98 @@
+
+  .player {
+    position: absolute;
+    width: 30vh;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    top: 17%;
+  }
+  .player-avatar {
+    border: solid white 3px;
+    width: 7vw;;
+    min-width: 100px;
+    height: 7vw;
+    min-height: 100px;
+    position: absolute;
+    top: 0%;
+    background-image: var(--avatar-image);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+    font-size: 1.1rem;
+}
+.player-cards {
+    position: absolute;
+    height: 50%;
+    width: 90%;
+    top: 32%;
+    z-index: 1;
+    background-image: url(../assets/textures/cardsPlaceholder.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.cards-left {
+    position: absolute;
+    font-size: 2rem;
+    color: white;
+    top: 75%;
+    left: 87%;
+}
+
+.player-avatar-left{
+  right: 10%;
+}
+.player-left{
+  left: 0;
+}
+.player-cards-left {
+  left: 15%;
+}
+
+.player-top {
+  height: 30vh;
+  width: 60vh;
+  align-items: flex-start;
+  justify-content: center;
+  top: 0;
+  left: 35%;
+  z-index: 4;
+}
+.player-avatar-top {
+    top: 3%;
+    left: 70%;
+}
+.player-cards-top {
+  height: 90%;
+  width: 50%;
+  transform: rotate(90deg);
+  top: 10%;
+}
+.cards-left-top {
+  left: 5%;
+  top: 60%;
+}
+
+.player-right {
+  right: 0%; 
+  align-items: center;
+  justify-content: flex-end;
+}
+.player-avatar-right {
+    top: 0%;
+    left: 10%;
+}
+.player-cards-right {
+  transform: rotate(180deg);
+  top: 33%;
+  right: 15%;
+}
+.cards-left-right {
+  left: 5%;
+  top: 70%;
+} 
