@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './Room.css'
 import {useParams, useSearchParams} from "react-router-dom";
 import Player from '../components/Player';
+import {getPlayerPosition} from "../modules/PlayerPosition";
 
 export default function Room({ user }) {
     const startGameIn = 10 * 1000; // 10 secs;
@@ -11,6 +12,8 @@ export default function Room({ user }) {
 
     const [room, setRoom] = useState(null);
     const [game, setGame] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [arePlayersSorted, setArePlayersSorted] = useState(false);
 
     useEffect(() => {
         if (!room) {
@@ -27,21 +30,10 @@ export default function Room({ user }) {
                 });
         }
     }, []);
-
-        // if (room) {
-        // let players = room.players;
-        // let me = players.find(item => item.id === user.id);
-        // let k = players.indexOf(me);
-        // console.log(k);
-        // players=players.splice(k).concat(players);
-        // console.log(players);    
-        // }
- 
-
-
     
     useEffect(() => {
         if (room) {
+            sortPlayers(room);
             if (!room.game) {
                 setTimeout(async () => {
                     await startGame(room.hash);
@@ -50,7 +42,16 @@ export default function Room({ user }) {
                 setGame(room.game);
             }
         }
-    }, [room]);
+    }, [room, startGameIn]);
+
+    const sortPlayers = (room) => {
+        if (!arePlayersSorted) {
+            const myPlayer = room.players.find(item => item.id === user.id);
+            const k = room.players.indexOf(myPlayer);
+            setPlayers(room.players.splice(k).concat(room.players));
+            setArePlayersSorted(true);
+        }
+    }
 
     const startGame = async (roomId) => {
         const response = await fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${roomId}/games`, {
@@ -79,20 +80,9 @@ export default function Room({ user }) {
 
                 {!game && <div className='waitNote'>Ждем всех игроков...</div>}
 
-                <Player player ='player-left'
-                        playerAvatar = 'player-avatar-left'
-                        playerCards = 'player-cards-left'
-                    />
-                <Player player ='player-top'
-                        playerAvatar = 'player-avatar-top'
-                        playerCards = 'player-cards-top'
-                        cardsLeft = 'cards-left-top'
-                    />
-                <Player player ='player-right'
-                        playerAvatar = 'player-avatar-right'
-                        playerCards = 'player-cards-right'
-                        cardsLeft = 'cards-left-right'
-                    />
+                {players.map((item, index) => (
+                    index && <Player key={index} position={getPlayerPosition(players, index)} player={item} />
+                ))}
             </div>
             <div className='game-bottom-panel'>
                 <button className='rules-button'>?</button>
