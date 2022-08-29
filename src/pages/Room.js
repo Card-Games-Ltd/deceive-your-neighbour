@@ -6,8 +6,6 @@ import {getPlayerPosition} from "../modules/PlayerPosition";
 import {UserContext} from "../App";
 import RoomPanel from "../components/RoomPanel";
 
-export const RoomContext = createContext();
-
 export default function Room() {
     const navigate = useNavigate();
     const user = useContext(UserContext);
@@ -48,17 +46,20 @@ export default function Room() {
         }
     }
 
-    if (playersNumber === players.length && !isCounterGoingDown) {
-        console.log(playersNumber);
-        setIsCounterGoingDown(true);
-        const time = startGameIn * 1000; // * sec
-        setInterval(() => {
-            setStartGameIn(startGameIn - 1);
-        }, 1000);
-        setTimeout(async () => {
-            await startGame(hash);
-        }, time);
-    }
+    useEffect(() => {
+        if (playersNumber === players.length && !isCounterGoingDown) {
+            console.log(playersNumber);
+            setIsCounterGoingDown(true);
+            const time = startGameIn * 1000; // * sec
+            const interval = setInterval(() => {
+                setStartGameIn(prevState => prevState - 1);
+            }, 1000);
+            setTimeout(() => {
+                clearInterval(interval);
+                startGame(hash);
+            }, time);
+        }
+    }, [players])
 
     const sortPlayers = (players) => {
         const myPlayer = players.find(item => item.id === user.id);
@@ -70,7 +71,7 @@ export default function Room() {
         const response = await fetch(process.env.REACT_APP_API_PREFIX + `/api/rooms/${roomId}/games`, {
             method: 'POST'
         });
-        if (response.status === 201) {
+        if (response.ok) {
             await navigate(`/rooms/${hash}/game?password=${searchParams.get("password")}`)
         }
     }
