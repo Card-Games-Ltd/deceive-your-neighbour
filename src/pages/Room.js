@@ -64,6 +64,7 @@ export default function Room() {
         const data = await response.json();
         console.log(data);
         setGame(data);
+
     }
 
     return (
@@ -76,7 +77,7 @@ export default function Room() {
                 </div>
                 <div className='navbar-info'>
                     <div>{room && room.name}</div>
-                    {searchParams.password && <div>Пароль: {searchParams.password}</div>}
+                    {searchParams.get("password") && <div>Пароль: {searchParams.get("password")}</div>}
                 </div>
             </div>
 
