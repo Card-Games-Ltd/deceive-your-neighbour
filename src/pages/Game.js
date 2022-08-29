@@ -12,7 +12,7 @@ export default function Game() {
     const user = useContext(UserContext);
     const [searchParams] = useSearchParams();
     const { id } = useParams();
-    const [players, setPlayers] = useState([]);
+    // const [players, setPlayers] = useState([]);
     const [game, setGame] = useState(null);
     const [arePlayersSorted, setArePlayersSorted] = useState(false);            
        
@@ -34,7 +34,7 @@ export default function Game() {
         if (!arePlayersSorted) {
             const myPlayer = game.players.find(item => item.id === user.id);
             const k = game.players.indexOf(myPlayer);
-            setPlayers(game.players.splice(k).concat(game.players));
+            game.players = (game.players.splice(k).concat(game.players));
             setArePlayersSorted(true);
         }
     }
@@ -63,7 +63,7 @@ export default function Game() {
         <div className='game-main'>
 
             {game && game.players.map((item, index) => (
-                index ? <Player key={index} position={getPlayerPosition(players, index)} player={item} /> :  '' 
+                index ? <Player key={index} position={getPlayerPosition(game.players, index)} player={item} /> :  '' 
             ))}
         </div>
 
