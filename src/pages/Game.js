@@ -62,8 +62,8 @@ export default function Game() {
             
         <div className='game-main'>
 
-            {game && game.players.map((item, index) => (
-                index ? <Player key={index} position={getPlayerPosition(game.players, index)} player={item} /> :  '' 
+            {game && game.players.slice(1).map((item, index) => (
+                <Player key={index} position={getPlayerPosition(game.players.slice(1), index)} player={item} />
             ))}
         </div>
 
