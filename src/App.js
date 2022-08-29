@@ -11,7 +11,7 @@ import Room from "./pages/Room";
 import Welcome from "./pages/Welcome";
 import Create from "./pages/Create";
 import RoomsList from "./pages/RoomsList";
-// import Game from "./pages/Game";
+import Game from "./pages/Game";
 
 export const UserContext = createContext();
 
@@ -37,7 +37,7 @@ export default function App() {
       <UserContext.Provider value={user}>
       <div className="App">
         <Routes>
-          {/*<Route path="/rooms/:id/game" element={<Game />}></Route>*/}
+          <Route path="/rooms/:id/game" element={<Game />}></Route>
           <Route path="/rooms/:id" element={<Room />}></Route>
           <Route path="/create" element={<Create />}></Route>
           <Route path="/rooms" element={<RoomsList />}></Route>
