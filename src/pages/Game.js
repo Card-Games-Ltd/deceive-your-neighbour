@@ -60,15 +60,15 @@ export default function Game() {
             </div>
         </div>
 
-        <div className='game-main'>
+        {/*<div className='game-main'>*/}
 
             {game && game.players.map((item, index) => (
                 index ? <Player key={index} position={getPlayerPosition(players, index)} player={item} /> :  '' 
             ))}
         </div>
 
-        <GamePanel/>
+        {/*<GamePanel/>*/}
 
-    </div>
+        </div>
     )
 }
