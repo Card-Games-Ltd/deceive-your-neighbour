@@ -1,0 +1,24 @@
+.handCard {
+    background: rgb(247, 247, 247);
+    height: 100px;
+    width: 60px;
+    border: solid black 1px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    flex-direction: column;
+    transition: all 0.3s;
+    line-height: 2rem;
+    font-size: 1.5rem;
+}
+.handCard:hover {
+    transform: scale(1.2);
+    background: rgb(255, 255, 255);
+    z-index: 100;
+}
+
+.red {
+    color: rgb(178, 32, 32);
+}

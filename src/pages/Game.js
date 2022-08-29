@@ -5,6 +5,8 @@ import GamePanel from '../components/GamePanel';
 import {getPlayerPosition} from "../modules/PlayerPosition";
 import {useParams, useSearchParams} from "react-router-dom";
 import { UserContext } from '../App';
+import HandCard from '../components/HandCard';
+
 
 
 export default function Game() {
@@ -14,7 +16,9 @@ export default function Game() {
     const { id } = useParams();
     // const [players, setPlayers] = useState([]);
     const [game, setGame] = useState(null);
-    const [arePlayersSorted, setArePlayersSorted] = useState(false);            
+    const [arePlayersSorted, setArePlayersSorted] = useState(false); 
+    const [cards, setCards] = useState([]);      
+    const [myCards, setMyCards] = useState([]);     
        
    if (!game) {
         fetch( 
@@ -30,6 +34,13 @@ export default function Game() {
         });
     }
 
+    useEffect(() => {
+        if (game) {
+            setCards(game.cards);
+            console.log(cards)
+        }
+    }, [game]);
+
     const sortPlayers = (game) => {
         if (!arePlayersSorted) {
             const myPlayer = game.players.find(item => item.id === user.id);
@@ -39,10 +50,18 @@ export default function Game() {
         }
     }
     useEffect(() => {
-        if (game) {
+        if (game && !arePlayersSorted) {
             sortPlayers(game);
         }
     }, [game]);
+
+    useEffect(()=> {
+        if (cards) {
+            setMyCards(cards.filter(item => item.holder.id === user.id))
+            console.log(myCards);
+        }
+
+    }, [cards])
 
 
 
@@ -59,16 +78,19 @@ export default function Game() {
                     {searchParams.get("password") && <div>Пароль: {searchParams.get('password')}</div>}
                 </div>
             </div>
-            
+
         <div className='game-main'>
 
             {game && game.players.slice(1).map((item, index) => (
                 <Player key={index} position={getPlayerPosition(game.players.slice(1), index)} player={item} />
             ))}
         </div>
-
+            {/* <div className='JokeOkay'></div> */}
         <GamePanel/>
 
+        <div className='handContainer'>
+            {myCards? myCards.map(item => <HandCard {...item}/>) : ''}
+        </div>
     </div>
 
     )

@@ -36,3 +36,40 @@
     align-items: center;
     justify-content: center;
 }
+.JokeOkay {
+    position: absolute;
+    width: 20vw;
+    height: 30vh;
+    bottom: 2%;
+    left: 40%;
+    background-image: url(../assets/textures/hand.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
+
+.handContainer {
+    position: absolute;
+    height: 20vh;
+    width: 50vw;
+    /* border: solid black 2px; */
+    bottom: 0;
+    left: 20%;
+    display: grid;
+    grid-template-columns: 1fr  1fr  1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    overflow-Y: scroll ;
+    padding-top: 10px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */  
+    padding-left: 10px;
+    row-gap: 0.2em;
+}
+
+.handContainer::-webkit-scrollbar {
+    display: none;
+  }
+  .handContainer:hover {
+    padding-top: 200px;
+  }
