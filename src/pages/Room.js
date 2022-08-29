@@ -5,7 +5,7 @@ import Player from '../components/Player';
 import GamePanel from '../components/GamePanel';
 import {getPlayerPosition} from "../modules/PlayerPosition";
 
-export default function Room({ user }) {
+export default function Room( {user} ) {
     const startGameIn = 10 * 1000; // 10 secs;
 
     const [searchParams] = useSearchParams();
@@ -86,7 +86,7 @@ export default function Room({ user }) {
                 ))}
             </div>
 
-            <GamePanel {...user}/>
+            <GamePanel />
 
         </div>
     );

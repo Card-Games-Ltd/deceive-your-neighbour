@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, createContext} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,9 +12,11 @@ import Welcome from "./pages/Welcome";
 import Create from "./pages/Create";
 import RoomsList from "./pages/RoomsList";
 
+export const UserContext = createContext();
 
 export default function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  
 
   const addUser = (attributes) => {
     if (!user) {
@@ -29,16 +31,18 @@ export default function App() {
     }
   }, [user]);
 
-  return (
+  return (    
     <Router>
+      <UserContext.Provider value={user}>
       <div className="App">
         <Routes>
-          <Route path="/rooms/:id" element={<Room user={user} />}></Route>
-          <Route path="/create" element={<Create user={user} />}></Route>
-          <Route path="/rooms" element={<RoomsList user={user} />}></Route>
-          <Route path="/" element={<Welcome user={user} addUser={addUser} />}></Route>
+          <Route path="/rooms/:id" element={<Room />}></Route>
+          <Route path="/create" element={<Create />}></Route>
+          <Route path="/rooms" element={<RoomsList />}></Route>
+          <Route path="/" element={<Welcome addUser={addUser} />}></Route>
         </Routes>
       </div>
+      </UserContext.Provider>
     </Router>
   );
 }

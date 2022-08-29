@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./GamePanel.css";
+import { UserContext } from '../App';
 
-export default function GamePanel(user) {
-    console.log(user);
+export default function GamePanel() {
+    const user = useContext(UserContext);
     return (
         <div className='game-bottom-panel'>
             <button className='rules-button'>?</button>
