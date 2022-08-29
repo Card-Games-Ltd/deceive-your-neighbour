@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Welcome.css';
 import {useNavigate} from "react-router-dom";
 import Header from "../components/Header";
 import {toBase64} from "../modules/Base64";
+import {UserContext} from "../App";
 
-export default function Welcome({user, addUser = f => f}) {
+export default function Welcome({addUser = f => f}) {
     const navigate = useNavigate();
+    const user = useContext(UserContext);
 
     const [name, setName] = useState("");
     const [avatar, setAvatar] = useState(null);

@@ -4,6 +4,7 @@ import { UserContext } from '../App';
 
 export default function GamePanel() {
     const user = useContext(UserContext);
+
     return (
         <div className='game-bottom-panel'>
             <button className='rules-button'>?</button>

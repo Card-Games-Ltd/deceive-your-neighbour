@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './Create.css';
 import {useNavigate} from "react-router-dom";
 import Header from "../components/Header";
+import {UserContext} from "../App";
 
-export default function Create({user}) {
+export default function Create() {
     const navigate = useNavigate();
+    const user = useContext(UserContext);
 
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");

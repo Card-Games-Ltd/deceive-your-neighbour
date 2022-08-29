@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Room.css'
 import {useParams, useSearchParams} from "react-router-dom";
 import Player from '../components/Player';
 import GamePanel from '../components/GamePanel';
 import {getPlayerPosition} from "../modules/PlayerPosition";
+import {UserContext} from "../App";
 
-export default function Room( {user} ) {
+export default function Room() {
+    const user = useContext(UserContext);
+
     const startGameIn = 10 * 1000; // 10 secs;
 
     const [searchParams] = useSearchParams();
@@ -81,8 +84,8 @@ export default function Room( {user} ) {
 
                 {!game && <div className='waitNote'>Ждем всех игроков...</div>}
 
-                {players.map((item, index) => (
-                    index ? <Player key={index} position={getPlayerPosition(players, index)} player={item} /> :  '' 
+                {players.slice(1).map((item, index) => (
+                    <Player key={index} position={getPlayerPosition(players.slice(1), index)} player={item} />
                 ))}
             </div>
 

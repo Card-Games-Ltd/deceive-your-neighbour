@@ -1,12 +1,15 @@
 import './EnterRoomWindow.css';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {UserContext} from "../App";
 
-export default function EnterRoomWindow({ user, hash, close = f => f }) {
+export default function EnterRoomWindow({ hash, close = f => f }) {
     const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+
+    const user = useContext(UserContext);
 
     useEffect(() => {
         setErrorMessage(""); // clear errors when password is modified
