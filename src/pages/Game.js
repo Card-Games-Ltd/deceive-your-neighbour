@@ -49,17 +49,17 @@ export default function Game() {
     return (
         <div className='container'>
 
-        <div className='navbar'>
-            <div className='navbar-info'>
-                <div>Пятерки</div>
-                <div>Карт на столе: 12</div>
+            <div className='navbar'>
+                <div className='navbar-info'>
+                    <div>Пятерки</div>
+                    <div>Карт на столе: 12</div>
+                </div>
+                <div className='navbar-info'>
+                    <div>{game && game.name}</div>
+                    {searchParams.get("password") && <div>Пароль: {searchParams.get('password')}</div>}
+                </div>
             </div>
-            <div className='navbar-info'>
-                <div>{game && game.name}</div>
-                {searchParams.get("password") && <div>Пароль: {searchParams.get('password')}</div>}
-            </div>
-        </div>
-
+            
         <div className='game-main'>
 
             {game && game.players.map((item, index) => (
@@ -70,5 +70,6 @@ export default function Game() {
         <GamePanel/>
 
     </div>
+
     )
 }
