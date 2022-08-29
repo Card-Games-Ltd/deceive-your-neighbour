@@ -24,7 +24,7 @@
     background-image: var(--avatar-image);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin-top: 2%;
+    margin-top: 1%;
     transition: all 0.2s;
 }
 .avatar:hover{
